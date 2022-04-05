@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	ch := make(chan int) // creates a channel called ch
-	a := <-ch            // reads a value from channel into a
+	a := <-ch            // reads a value from channel into a. it's an unbuffered channel
 	b := 300
 	ch <- b // reads value of b into ch
 
@@ -18,4 +18,8 @@ func main() {
 	if !ok {
 		fmt.Println("channel is closed")
 	}
+
+	bufferCh := make(chan int, 10) // buffered channel
+	var bufferCh2 chan int
+	bufferCh2 = make(chan int, 10) // buffered channel
 }
